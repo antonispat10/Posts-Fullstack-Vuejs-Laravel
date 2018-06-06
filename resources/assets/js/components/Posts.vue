@@ -23,6 +23,8 @@
             <hr>
             <button @click="editPost(post)" class="btn btn-warning mb-2">Edit</button>
             <button @click="deletePost(post.id)" class="btn btn-danger">Delete</button>
+            <h3>{{ post.title }}</h3><br><br>
+            <p>{{ post.body }}</p><br>
         </div>
     </div>
 </template>
@@ -42,6 +44,7 @@
                 edit: false
             }
         },
+
         created() {
             this.fetchPosts();
         },
@@ -55,6 +58,7 @@
                     this.posts = res.posts.data,
                     this.pages = res.posts,
                     console.log(this.posts);
+                    console.log(this.pages);
                 vm.makePagination(this.pages);
             });
             },
@@ -82,7 +86,6 @@
             },
             addPost() {
                 if(this.edit == false) {
-                    console.log('ok');
                     fetch('api/post/store', {
                         method:'post',
                         body:JSON.stringify(this.post),
@@ -92,7 +95,6 @@
                     })
                         .then(res => res.json())
                 .then(data=> {
-                        console.log('ok');
 
                     this.post.title = '';
                     this.post.body = '';
@@ -122,6 +124,8 @@
                 this.post.post_id = post.id;
                 this.post.title = post.title;
                 this.post.body = post.body;
+                }
+                this.pagination = pagination;
             }
         }
     };

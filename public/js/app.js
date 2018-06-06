@@ -47321,143 +47321,9 @@ module.exports = Component.exports
 
 /***/ }),
 /* 49 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            posts: [],
-            post: {
-                id: '',
-                title: '',
-                body: ''
-            },
-            post_id: '',
-            pagination: {},
-            edit: false
-        };
-    },
-    created: function created() {
-        this.fetchPosts();
-    },
-
-    methods: {
-        fetchPosts: function fetchPosts(page_url) {
-            var _this = this;
-
-            var vm = this;
-            page_url = page_url || '/api/posts';
-            fetch(page_url).then(function (res) {
-                return res.json();
-            }).then(function (res) {
-                _this.posts = res.posts.data, _this.pages = res.posts, console.log(_this.posts);
-                vm.makePagination(_this.pages);
-            });
-        },
-        makePagination: function makePagination(pages) {
-            var pagination = {
-                current_page: pages.current_page,
-                last_page: pages.last_page,
-                next_page_url: pages.next_page_url,
-                prev_page_url: pages.prev_page_url
-            };
-            this.pagination = pagination;
-        },
-        deletePost: function deletePost(id) {
-            var _this2 = this;
-
-            if (confirm('Are you sure?')) {
-                fetch('api/post/' + id, {
-                    method: 'delete'
-                }).then(function (res) {
-                    return res.json();
-                }).then(function (data) {
-                    alert('Post Removed');
-                    _this2.fetchPosts();
-                }).catch(function (err) {
-                    return console.log();
-                });
-            }
-        },
-        addPost: function addPost() {
-            var _this3 = this;
-
-            if (this.edit == false) {
-                console.log('ok');
-                fetch('api/post/store', {
-                    method: 'post',
-                    body: JSON.stringify(this.post),
-                    headers: {
-                        'content-type': 'application/json'
-                    }
-                }).then(function (res) {
-                    return res.json();
-                }).then(function (data) {
-                    console.log('ok');
-
-                    _this3.post.title = '';
-                    _this3.post.body = '';
-                    alert('Post Added');
-                    _this3.fetchPosts();
-                });
-            } else {
-                fetch('api/post/' + this.post.id + '/edit', {
-                    method: 'put',
-                    body: JSON.stringify(this.post),
-                    headers: {
-                        'content-type': 'application/json'
-                    }
-                }).then(function (res) {
-                    return res.json();
-                }).then(function (data) {
-                    _this3.post.title = '';
-                    _this3.post.body = '';
-                    alert('Post Updated');
-                    _this3.fetchPosts();
-                });
-            }
-        },
-        editPost: function editPost(post) {
-            this.edit = true;
-            this.post.id = post.id;
-            this.post.post_id = post.id;
-            this.post.title = post.title;
-            this.post.body = post.body;
-        }
-    }
-});
+throw new Error("Module build failed: SyntaxError: C:/xampp/htdocs/new/posts/resources/assets/js/components/Posts.vue: Unexpected token, expected , (128:12)\n\n\u001b[0m \u001b[90m 126 | \u001b[39m            \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpost\u001b[33m.\u001b[39mbody \u001b[33m=\u001b[39m post\u001b[33m.\u001b[39mbody\u001b[33m;\u001b[39m\n \u001b[90m 127 | \u001b[39m            }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 128 | \u001b[39m            \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpagination \u001b[33m=\u001b[39m pagination\u001b[33m;\u001b[39m\n \u001b[90m     | \u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 129 | \u001b[39m        }\n \u001b[90m 130 | \u001b[39m    }\n \u001b[90m 131 | \u001b[39m}\u001b[33m;\u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 50 */
@@ -47637,7 +47503,14 @@ var render = function() {
               }
             },
             [_vm._v("Delete")]
-          )
+          ),
+          _vm._v(" "),
+          _c("h3", [_vm._v(_vm._s(post.title))]),
+          _c("br"),
+          _c("br"),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(post.body))]),
+          _c("br")
         ])
       })
     ],
