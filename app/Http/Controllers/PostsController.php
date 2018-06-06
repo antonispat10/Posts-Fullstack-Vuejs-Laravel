@@ -39,8 +39,8 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $post = new Post();
-        $post->name = $request->input('name');
-        $post->description = $request->input('description');
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
 
         $post->save();
 
@@ -91,8 +91,8 @@ class PostsController extends Controller
         if(!$post) {
             return response()->json(['message'=> 'Document not found'], 404);
         }
-        $post->name = $request['name'];
-        $post->description = $request['description'];
+        $post->title = $request['title'];
+        $post->body = $request['body'];
 
 
         $post->save();

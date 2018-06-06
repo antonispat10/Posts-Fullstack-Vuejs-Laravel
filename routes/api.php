@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('posts','PostsController@index');
 Route::get('post/{id}','PostsController@show');
 
-Route::post('post/{id}','PostsController@store');
+Route::post('post/store','PostsController@store');
 
 Route::get('post/edit/{id}','PostsController@show');
 
